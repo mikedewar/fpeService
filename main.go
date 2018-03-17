@@ -33,7 +33,7 @@ func main() {
 	http.Handle("/", r)
 
 	log.Println("serving on", *port)
-	err = http.ListenAndServe(":"+*port, nil)
+	err = http.ListenAndServeTLS(":"+*port, "cert.pem", "key.pem", nil)
 	if err != nil {
 		log.Panicf(err.Error())
 	}
